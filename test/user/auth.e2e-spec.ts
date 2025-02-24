@@ -38,7 +38,7 @@ describe('Auth Module', () => {
   });
 
   describe('Login', () => {
-    it('Login successfully: /api/v1/auth/email/login (POST)', () => {
+    it('should login successfully: /api/v1/auth/email/login (POST)', () => {
       return request(app)
         .post('/api/v1/auth/email/login')
         .send({ email: newUserEmail, password: newUserPassword })

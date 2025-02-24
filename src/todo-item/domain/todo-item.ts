@@ -1,4 +1,3 @@
-import { TodoItemStatus } from '../../statuses/domain/todo-item-status';
 import { ApiProperty } from '@nestjs/swagger';
 import { PriorityEnum } from '../priority.enum';
 import { TodoItemStatusEnum } from '../../statuses/statuses.enum';

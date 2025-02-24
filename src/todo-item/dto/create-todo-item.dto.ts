@@ -6,10 +6,7 @@ import {
   IsArray,
   IsDateString,
 } from 'class-validator';
-import { FileDto } from '../../files/dto/file.dto';
-import { TodoItemStatus } from '../../statuses/domain/todo-item-status';
 import { PriorityEnum } from '../priority.enum';
-import { Type } from 'class-transformer';
 import { TodoItemStatusEnum } from '../../statuses/statuses.enum';
 
 export class CreateTodoItemDto {
@@ -40,11 +37,6 @@ export class CreateTodoItemDto {
   })
   @IsArray()
   tags: string[];
-
-  @ApiPropertyOptional({ type: () => FileDto })
-  @IsOptional()
-  media?: FileDto | null;
-
   @ApiProperty({
     enum: TodoItemStatusEnum,
     example: TodoItemStatusEnum.NotStart,

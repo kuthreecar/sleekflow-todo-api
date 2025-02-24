@@ -7,7 +7,6 @@ import {
 } from 'class-validator';
 import { Transform, Type, plainToInstance } from 'class-transformer';
 import { TodoItem } from '../domain/todo-item';
-import { RoleDto } from '../../roles/dto/role.dto';
 import { TodoItemStatus } from '../../statuses/domain/todo-item-status';
 import { TodoItemStatusEnum } from '../../statuses/statuses.enum';
 import { PriorityEnum } from '../priority.enum';

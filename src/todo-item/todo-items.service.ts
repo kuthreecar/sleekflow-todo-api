@@ -1,9 +1,7 @@
 import {
-  HttpStatus,
   Injectable,
   NotFoundException,
   UnauthorizedException,
-  UnprocessableEntityException,
 } from '@nestjs/common';
 import { CreateTodoItemDto } from './dto/create-todo-item.dto';
 import { NullableType } from '../utils/types/nullable.type';
@@ -12,7 +10,6 @@ import { TodoItemRepository } from './infrastructure/persistence/todo-item.repos
 import { TodoItem } from './domain/todo-item';
 import { FilesService } from '../files/files.service';
 import { IPaginationOptions } from '../utils/types/pagination-options';
-import { FileType } from '../files/domain/file';
 import { UpdateTodoItemDto } from './dto/update-todo-item.dto';
 
 @Injectable()
@@ -26,6 +23,7 @@ export class TodoItemsService {
     createTodoItemDto: CreateTodoItemDto,
     ownerId: number,
   ): Promise<TodoItem> {
+    /*
     let photo: FileType | null | undefined = undefined;
 
     if (createTodoItemDto.media?.id) {
@@ -44,7 +42,7 @@ export class TodoItemsService {
     } else if (createTodoItemDto.media === null) {
       photo = null;
     }
-
+    */
     return this.todoItemsRepository.create({
       name: createTodoItemDto.name,
       description: createTodoItemDto.description,
@@ -88,13 +86,12 @@ export class TodoItemsService {
     updateTodoItemDto: UpdateTodoItemDto,
     ownerId: number,
   ): Promise<TodoItem | null> {
-    
-    let todoItem = await this.todoItemsRepository.findById(id)
+    const todoItem = await this.todoItemsRepository.findById(id);
 
     if (!todoItem) {
       throw new NotFoundException();
     }
-    if(todoItem?.ownerId != ownerId) {
+    if (todoItem?.ownerId != ownerId) {
       throw new UnauthorizedException();
     }
 

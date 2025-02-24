@@ -1,7 +1,13 @@
 import { PartialType, ApiPropertyOptional } from '@nestjs/swagger';
 import { CreateTodoItemDto } from './create-todo-item.dto';
 
-import { IsArray, IsDateString, IsEmail, IsEnum, IsOptional, IsString, MinLength } from 'class-validator';
+import {
+  IsArray,
+  IsDateString,
+  IsEnum,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import { FileDto } from '../../files/dto/file.dto';
 
 import { TodoItemStatusEnum } from '../../statuses/statuses.enum';

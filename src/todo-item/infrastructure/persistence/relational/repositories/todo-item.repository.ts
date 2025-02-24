@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { FindOptionsWhere, Repository, In, IsNull } from 'typeorm';
@@ -39,7 +39,10 @@ export class TodoItemsRelationalRepository implements TodoItemRepository {
     sortOptions?: SortTodoItemDto[] | null;
     paginationOptions: IPaginationOptions;
   }): Promise<TodoItem[]> {
-    const where: FindOptionsWhere<TodoItemEntity> = { ownerId, deletedAt: IsNull() };
+    const where: FindOptionsWhere<TodoItemEntity> = {
+      ownerId,
+      deletedAt: IsNull(),
+    };
     if (filterOptions?.status != null) {
       where.status = In(filterOptions?.status);
     }
@@ -61,15 +64,17 @@ export class TodoItemsRelationalRepository implements TodoItemRepository {
 
   async findById(id: TodoItem['id']): Promise<NullableType<TodoItem>> {
     const entity = await this.todoItemsRepository.findOne({
-      where: { id: Number(id) },
+      where: { id: Number(id), deletedAt: IsNull() },
     });
-
-    return entity ? TodoItemMapper.toDomain(entity) : null;
+    if (!entity) {
+      throw new NotFoundException(`Todo item with id ${id} not found`);
+    }
+    return entity;
   }
 
   async findByIds(ids: TodoItem['id'][]): Promise<TodoItem[]> {
     const entities = await this.todoItemsRepository.find({
-      where: { id: In(ids) },
+      where: { id: In(ids), deletedAt: IsNull() },
     });
 
     return entities.map((user) => TodoItemMapper.toDomain(user));
