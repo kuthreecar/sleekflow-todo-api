@@ -1,6 +1,6 @@
-# Sleekflow Todo
+# Sleekflow Todo Api
 
-1. Clone repository
+1. Clone repository 
 
    ```bash
    git clone --depth 1 https://github.com/kuthreecar/sleekflow-todo-api.git
@@ -58,6 +58,16 @@
    npm run migration:generate -- src/database/migrations/<name>
    ```
 
+---
+
+1. E2E Test
+   ```bash
+   npm run test:e2e
+   ```
+---
+
 1. Swagger
    http://localhost:3000/docs
    http://localhost:3000/docs-json
+
+---

@@ -100,7 +100,6 @@ export class TodoItemsRelationalRepository implements TodoItemRepository {
   }
 
   async remove(id: TodoItem['id']): Promise<void> {
-    console.log(id);
     await this.todoItemsRepository.softDelete(id);
   }
 }
