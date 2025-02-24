@@ -6,15 +6,12 @@
    git clone --depth 1 https://github.com/kuthreecar/sleekflow-todo-api.git
    ```
 
-1. Go to folder, and copy `env-example-relational` as `.env`.
+1. Go to folder, and copy `env-example` as `.env`.
 
    ```bash
    cd my-app/
    cp env-example-relational .env
    ```
-
-1. Change `DATABASE_HOST=postgres` to `DATABASE_HOST=localhost`
-
 
 1. Install dependency
 
