@@ -94,7 +94,6 @@ export class TodoItemsService {
     if (!todoItem) {
       throw new NotFoundException();
     }
-    console.log('todoItem?.ownerId',todoItem?.ownerId,ownerId)
     if(todoItem?.ownerId != ownerId) {
       throw new UnauthorizedException();
     }
