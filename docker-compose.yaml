@@ -22,7 +22,7 @@ services:
     ports:
       - 6379:6379
 
-  api:
+  sleekflow-todo-api:
     build:
       context: .
       dockerfile: Dockerfile

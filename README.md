@@ -9,8 +9,8 @@
 1. Go to folder, and copy `env-example` as `.env`.
 
    ```bash
-   cd my-app/
-   cp env-example-relational .env
+   cd sleekflow-todo-api/
+   cp env-example .env
    ```
 
 1. Install dependency
@@ -19,12 +19,10 @@
    npm install
    ```
 
-1. Run app configuration
-
-   > You should run this command only the first time on initialization of your project, all next time skip it.
+1. Run container:
 
    ```bash
-   npm run app:config
+   docker compose up -d postgres redis
    ```
 
 1. Run migrations
@@ -32,13 +30,6 @@
    ```bash
    npm run migration:run
    ```
-
-1. Run additional container:
-
-   ```bash
-   docker compose up -d postgres adminer redis
-   ```
-
 
 1. Run seeds
 
@@ -51,7 +42,6 @@
    ```bash
    npm run start:dev
    ```
-
 
 ---
 
@@ -71,7 +61,7 @@
 ---
 
 1. Swagger
-   http://localhost:3000/docs
-   http://localhost:3000/docs-json
+   - http://localhost:3000/docs
+   - http://localhost:3000/docs-json
 
 ---
